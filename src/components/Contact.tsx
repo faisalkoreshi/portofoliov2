@@ -50,15 +50,29 @@ export const Contact = () => {
         className='max-w-xl space-y-4'
       >
         <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
-          <Input placeholder='Name' required />
-          <Input type='email' placeholder='Email' required />
+          <Input
+            placeholder='Name'
+            required
+          />
+          <Input
+            type='email'
+            placeholder='Email'
+            required
+          />
         </div>
-        <Input placeholder='Subject' required />
-        <Textarea placeholder='Message' rows={5} required />
+        <Input
+          placeholder='Subject'
+          required
+        />
+        <Textarea
+          placeholder='Message'
+          rows={5}
+          required
+        />
         <Button
           type='submit'
           disabled={isSubmitting}
-          className='flex items-center gap-2'
+          className='flex items-center gap-2 w-full'
         >
           {isSubmitting ? 'Sending...' : 'Send Message'}
           <Send size={16} />
