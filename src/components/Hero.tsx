@@ -29,7 +29,19 @@ export const Hero = () => {
         Im <span className='text-primary'>Faisal</span> UI/UX designer and
         forentend Developer
       </motion.h1>
-      <motion.div variants={fadeUp} className='mt-8'>
+      <motion.div
+        variants={fadeUp}
+        className='mt-8'
+      >
+        <p className='py-6 text-neutral-400'>
+          I am a passionate Web Developer and Web Designer with hands-on skills
+          in HTML, CSS, and JavaScript. I enjoy building clean, responsive, and
+          user-friendly websites that look great and work smoothly on all
+          devices. I focus on both design and functionality — making sure every
+          site is visually appealing, fast, and easy to use. I am always
+          learning new technologies and ready to help businesses and individuals
+          build a strong online presence.
+        </p>
         <a
           href='mailto:faisal.koreshi@gmail.com'
           className={cn(buttonVariants({}))}

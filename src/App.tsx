@@ -9,7 +9,7 @@ import { Footer } from '@/components/Footer';
 
 const App = () => {
   return (
-    <main className='flex flex-col flex-1 max-w-4xl lg:max-w-6xl mx-auto p-10 lg:pl-0 lg:pr-[10rem]'>
+    <main className='flex flex-col flex-1 max-w-4xl lg:max-w-6xl mx-auto p-10 lg:pl-0 lg:pr-40'>
       <Hero />
       <Projects />
       <About />

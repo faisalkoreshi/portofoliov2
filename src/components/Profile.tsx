@@ -22,7 +22,7 @@ export const Profile = () => {
         </div>
         <div>
           <p className='text-sm text-neutral-300'>Based In :</p>
-          <p className='text-lg capitalize'>Toronto Ontario Canada</p>
+          <p className='text-lg capitalize'>Toronto Ontario Canada </p>
         </div>
         <div className='flex gap-3 pt-2 text-neutral-500'>
           {socialLinks.map((social, i) => {
