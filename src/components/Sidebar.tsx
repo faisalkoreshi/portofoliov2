@@ -1,3 +1,4 @@
+import { motion } from 'motion/react';
 import {
   Sheet,
   SheetContent,
@@ -24,51 +25,83 @@ export const Sidebar = () => {
     <>
       <Sheet>
         <SheetTrigger>
-          <Button
-            variant='ghost'
-            size='icon'
-            className='m-4 fixed top-4 right-4 z-50 border-2 hover:border-primary bg-neutral-800 py-5 px-5 rounded-full hover:text-primary cursor-pointer'
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className='fixed top-4 right-4 z-50 bg-neutral-900/80 backdrop-blur-md border border-neutral-700 rounded-xl p-3 hover:border-primary hover:bg-neutral-800 transition-all duration-200 lg:hidden'
+            aria-label='Open menu'
           >
-            <MenuIcon size={30} />
-          </Button>
+            <MenuIcon
+              size={24}
+              className='text-neutral-100'
+            />
+          </motion.button>
         </SheetTrigger>
         <SheetContent
           side='right'
-          className='w-84 bg-neutral-900 text-white py-6 pl-10'
+          className='w-80 bg-neutral-900/95 backdrop-blur-xl text-white py-6 px-6'
         >
-          <SheetTitle className='text-lg font-semibold'>Menu</SheetTitle>
-          <nav className='flex flex-col gap-4'>
+          <div className='flex items-center justify-between mb-8'>
+            <SheetTitle className='text-lg font-semibold'>Menu</SheetTitle>
+            <Button
+              variant='ghost'
+              size='icon'
+              onClick={() =>
+                document
+                  .querySelector('[data-radix-sheet-content]')
+                  ?.dispatchEvent(new Event('close'))
+              }
+              className='text-neutral-400 hover:text-primary'
+            >
+              {/* <X size={20} /> */}
+            </Button>
+          </div>
+          <nav className='flex flex-col gap-2'>
             {navLinks.map((link) => {
               const Icon = link.icon;
               return (
-                <a
+                <motion.a
                   href={link.link}
                   key={link.label}
                   onClick={() => setActive(link.link)}
+                  whileHover={{ x: 4 }}
                   className={cn(
-                    'text-neutral-300 flex items-center gap-2 hover:text-primary transition-colors duration-200 text-base',
-                    active === link.link && 'text-primary',
+                    'flex items-center gap-3 px-3 py-3 rounded-xl transition-all duration-200',
+                    active === link.link
+                      ? 'bg-primary/10 text-primary border border-primary/20'
+                      : 'text-neutral-300 hover:text-primary hover:bg-neutral-800',
                   )}
                 >
-                  <Icon className='size-4' />
-                  {link.label}
-                </a>
+                  <Icon
+                    className={cn(
+                      'size-5 transition-colors duration-200 shrink-0',
+                      active === link.link
+                        ? 'text-primary'
+                        : 'text-neutral-400',
+                    )}
+                  />
+                  <span className='font-medium'>{link.label}</span>
+                </motion.a>
               );
             })}
           </nav>
-          <div className='mt-30'>
-            <p className='pb-2'>Socials</p>
-            <div className='flex gap-3 text-neutral-500'>
+          <div className='mt-10 pt-6 border-t border-neutral-800'>
+            <p className='text-xs text-neutral-500 uppercase tracking-wide mb-4'>
+              Socials
+            </p>
+            <div className='flex gap-3'>
               {socialLinks.map((social, i) => {
                 const Icon = social.icon;
                 return (
-                  <a
+                  <motion.a
                     key={i}
                     href={social.link}
-                    className='hover:text-primary border-2 border-neutral-500 p-2 rounded-full hover:border-primary transition duration-200'
+                    whileHover={{ scale: 1.1, y: -2 }}
+                    whileTap={{ scale: 0.95 }}
+                    className='w-10 h-10 border border-neutral-700 rounded-xl flex items-center justify-center text-neutral-400 hover:text-primary hover:border-primary transition-all duration-200'
                   >
-                    <Icon className='size-4' />
-                  </a>
+                    <Icon className='size-5' />
+                  </motion.a>
                 );
               })}
             </div>
